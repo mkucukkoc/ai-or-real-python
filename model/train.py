@@ -25,7 +25,7 @@ transform = transforms.Compose([
 # Dataset
 dataset = datasets.ImageFolder(DATA_DIR, transform=transform)
 dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=0)
-class_names = ['FAKE', 'REAL']
+class_names = ['ai', 'human']
 
 print("Veri sayısı:", len(dataset))
 print("Sınıflar:", dataset.classes)
