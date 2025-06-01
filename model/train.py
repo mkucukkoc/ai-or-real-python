@@ -7,7 +7,7 @@ from torchvision import datasets, transforms, models
 from torch.utils.data import DataLoader
 
 # Config
-DATA_DIR = "test"
+DATA_DIR = "test/test"
 BATCH_SIZE = 16
 EPOCHS = 5
 IMG_SIZE = 224
