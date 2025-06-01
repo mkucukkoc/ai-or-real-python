@@ -1,0 +1,9 @@
+torch>=2.0.0
+torchvision
+fastapi
+uvicorn
+pillow
+scikit-learn
+python-multipart
+numpy
+pydantic
