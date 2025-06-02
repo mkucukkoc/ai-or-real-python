@@ -4,7 +4,8 @@ import os
 import torch
 import torch.nn as nn
 from torchvision import datasets, transforms, models
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, Subset
+import random
 
 # Config
 DATA_DIR = "data/cifake/test"
@@ -24,22 +25,18 @@ transform = transforms.Compose([
 
 # Dataset
 full_dataset = datasets.ImageFolder(DATA_DIR, transform=transform)
-class_names = full_dataset.classes 
+class_names = full_dataset.classes
 
-# 🔽 Verileri sınırla (örneğin ilk 2000 örnek)
-from torch.utils.data import Subset
-import random
-
+# 🔽 Verileri sınırla
 MAX_IMAGES = 500
-indices = list(range(len(dataset)))
+indices = list(range(len(full_dataset)))
 random.shuffle(indices)
 dataset = Subset(full_dataset, indices[:MAX_IMAGES])
 
 dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=0)
-class_names = ['ai', 'human']
 
 print("Veri sayısı:", len(dataset))
-print("Sınıflar:", dataset.classes)
+print("Sınıflar:", class_names)
 print("CUDA durumu:", torch.cuda.is_available())
 
 # Model
