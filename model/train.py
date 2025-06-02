@@ -29,14 +29,14 @@ class_names = full_dataset.classes
 
 # 🔽 Verileri sınırla
 MAX_IMAGES = 500
-indices = list(range(len(full_dataset)))
+indices = list(range(len(full_dataset)))  # ✅ düzeltildi
 random.shuffle(indices)
 dataset = Subset(full_dataset, indices[:MAX_IMAGES])
 
 dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=0)
 
 print("Veri sayısı:", len(dataset))
-print("Sınıflar:", class_names)
+print("Sınıflar:", class_names)  # ✅ düzeltildi
 print("CUDA durumu:", torch.cuda.is_available())
 
 # Model
