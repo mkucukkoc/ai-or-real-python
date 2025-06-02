@@ -23,7 +23,8 @@ transform = transforms.Compose([
 ])
 
 # Dataset
-dataset = datasets.ImageFolder(DATA_DIR, transform=transform)
+full_dataset = datasets.ImageFolder(DATA_DIR, transform=transform)
+class_names = full_dataset.classes 
 
 # 🔽 Verileri sınırla (örneğin ilk 2000 örnek)
 from torch.utils.data import Subset
@@ -32,7 +33,7 @@ import random
 MAX_IMAGES = 500
 indices = list(range(len(dataset)))
 random.shuffle(indices)
-dataset = Subset(dataset, indices[:MAX_IMAGES])
+dataset = Subset(full_dataset, indices[:MAX_IMAGES])
 
 dataloader = DataLoader(dataset, batch_size=BATCH_SIZE, shuffle=True, num_workers=0)
 class_names = ['ai', 'human']
